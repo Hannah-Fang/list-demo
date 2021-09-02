@@ -1,0 +1,191 @@
+* {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3d3d4a;
+  /* font-size: 0.8rem; */
+}
+
+.title-bar {
+  background-color: #7561cc;
+  color: #fff;
+  padding: 35px 0 7%;
+  background-image: url("./image/banner_moun.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) {
+  .title-bar {
+    padding: 35px 0 10%;
+  }
+}
+
+@media (max-width: 991px) {
+  .title-bar {
+    padding: 35px 0 15%;
+  }
+}
+
+.title-bar .container {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .title-bar .container {
+    display: block;
+    text-align: center;
+  }
+  .title-bar .container .title {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+}
+
+.btnPrimary,
+.btnForm {
+  background-color: #fff;
+  margin: 0 10px;
+  padding: 0 20px;
+  border-radius: 5px;
+  color: #7561cc;
+  font-size: 0.8rem;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.btnPrimary i {
+  color: #7561cc;
+  margin-right: 5px;
+}
+
+.btnPrimary:hover {
+  background-color: #e1ccff;
+  color: #fff;
+}
+
+/* ----- table ----- */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-area {
+  min-height: 50vh;
+  padding: 2px 0;
+  background-color: #fff;
+}
+
+@media (max-width: 991px) {
+  .table-area {
+    margin-top: 20px;
+  }
+}
+
+.btnRound {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eaf1fa;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btnRound:hover {
+  background-color: #7561cc;
+}
+
+.btnRound:hover i {
+  color: #fff;
+}
+
+.tableTh {
+  background-color: #7561cc;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+/* 去除border */
+table,
+tr,
+td,
+th,
+thead {
+  border: none;
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.table td,
+.table th {
+  border-top: none;
+  vertical-align: middle;
+  padding: 1.5rem 0;
+  margin: auto 0;
+}
+
+.table td {
+  width: 100px;
+}
+
+.table thead th {
+  border-bottom: none;
+}
+
+/* 基偶不同色 */
+.table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f5eeff;
+}
+
+.table tbody tr {
+  box-shadow: 1px 3px 5px #31313123;
+}
+
+.table tbody tr:hover {
+  background-color: #e1ccff;
+}
+
+/* ----- 表單 ----- */
+.btnForm {
+  background-color: #7561cc;
+  color: #fff;
+}
+
+.btnForm:hover {
+  background-color: #e1ccff;
+  color: #7561cc;
+}
+
+.btnMute {
+  background-color: rgb(107, 106, 106);
+}
+
+.modal-header {
+  background-color: #7561cc;
+  color: #fff;
+}
+
+.close span {
+  color: #fff;
+}
+
+.d-flex > label {
+  color: #7561cc;
+}
+
+.radio,
+.seradio {
+  margin-right: 5px;
+}
