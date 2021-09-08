@@ -157,6 +157,10 @@ thead {
   background-color: #e1ccff;
 }
 
+.active {
+  background-color: #e1ccff;
+}
+
 /* ----- 表單 ----- */
 .btnForm {
   background-color: #7561cc;

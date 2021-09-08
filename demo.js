@@ -173,10 +173,12 @@ AjaxObject.prototype.id = 0;
 AjaxObject.prototype.alertt = function () {
     alert("Alert:");
 }
+
 AjaxObject.prototype.getall = function () {
   response = JSON.stringify(data);
   refreshTable(JSON.parse(response));
 }
+
 AjaxObject.prototype.add = function () {
   data.push({"s_sn":s_sn,"cnname":this.cnname,"enname":this.enname,"sex":this.sex, "phone": this.phone, "email": this.email});
   s_sn++
@@ -185,11 +187,13 @@ AjaxObject.prototype.add = function () {
   refreshTable(JSON.parse(response));
   $("#dialog-addconfirm").dialog("close");
 }
+
 AjaxObject.prototype.modify = function () {
   response = '[{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0"}]';
   refreshTable(JSON.parse(response));
   $("#dialog-modifyconfirm").dialog("close");
 }
+
 AjaxObject.prototype.modify_get = function () {
   response = '[{"s_sn":"35","cnname":"邱小甘","enname":"Peter","sex":"0"},{"s_sn":"49","cnname":"蔡凡昕","enname":"Allen","sex":"0"},{"s_sn":"50","cnname":"趙雪瑜","enname":"Sharon","sex":"0"},{"s_sn":"51","cnname":"賴佳蓉","enname":"Yoki","sex":"1"}]';
   initEdit(JSON.parse(response));
@@ -220,3 +224,4 @@ AjaxObject.prototype.delete = function () {
   response = JSON.stringify(data);
   refreshTable(JSON.parse(response));
 }
+
