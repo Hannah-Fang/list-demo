@@ -3,6 +3,7 @@ $(document).ready(function () {
   var url = "ajax/ajaxCard";
   var ajaxobj = new AjaxObject(url, "json"); //建立ajaxobj用來連線
   ajaxobj.getall();
+  
 
   // 新增表單 addform-addBtn
   $("#addBtn").click(function (e) {
@@ -34,10 +35,17 @@ $(document).ready(function () {
     e.preventDefault(); // avoid to execute the actual submit of the form.
   });
 
-  // 新增表單 addform-resetBtn searchform-resetBtn
-  $("#resetBtn").click(function () {
+  // 新增表單 addform-resetBtn
+  $("#resetBtnAdd").click(function () {
     $("#addform")[0].reset();
+  });
+
+  $("#resetBtnSe").click(function () {
     $("#searchform")[0].reset();
+  });
+
+  $("#resetBtnMo").click(function () {
+    $("#modifyform")[0].reset();
   });
 
   // 搜尋表單 searchform-searchBtn
@@ -46,10 +54,14 @@ $(document).ready(function () {
     // var data = $("#searchform").serialize();
     var cnname = $("#secnname").val();
     var enname = $("#seenname").val();
+    var phone = $("#sephone").val();
+    var email = $("#seemail").val();
     var sex = $('input:radio:checked[name="sesex"]').val();
     var ajaxobj = new AjaxObject(url, "json");
     ajaxobj.cnname = cnname;
     ajaxobj.enname = enname;
+    ajaxobj.phone = phone;
+    ajaxobj.email = email;
     ajaxobj.sex = sex;
     ajaxobj.search();
 
@@ -139,7 +151,7 @@ function refreshTable(data) {
       $("<td></td>").html(
         '<button id="modifybutton' +
           item.s_sn +
-          '" type="button" class="btn modifybutton btnRound" data-toggle="modal" data-target="#modifybutton" data-index=' +
+          '" type="button" class="btn modifybutton btnRound" id="btnRound" data-toggle="modal" data-target="#modifybutton" data-index=' +
           key +
           '><i class="fas fa-pen"></i> <span class="glyphicon glyphicon-list-alt"></span></button>'
       )
@@ -148,7 +160,7 @@ function refreshTable(data) {
       $("<td></td>").html(
         '<button id="deletebutton' +
           item.s_sn +
-          '" class="deletebutton btnRound" ><i class="fas fa-times"></i> <span class="glyphicon glyphicon-trash"></span></button>'
+          '" class="deletebutton btnRound deleteBtn" ><i class="fas fa-times"></i> <span class="glyphicon glyphicon-trash"></span></button>'
       )
     );
     $("#cardtable").append(row);
@@ -245,14 +257,23 @@ AjaxObject.prototype.add = function () {
   response = JSON.stringify(data);
   //   console.log(data);
   refreshTable(JSON.parse(response));
-  $("#dialog-addconfirm").dialog("close");
+
+  // 新增成功sweet alert
+  Swal.fire({
+    title: '新增成功!',
+    text: '已增加一筆資料',
+    icon: 'success',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  // $("#dialog-addconfirm").dialog("close");
 };
 
 let arrayIndex = '';
 
 AjaxObject.prototype.modify = function () {
   data[arrayIndex] = {
-    s_sn: s_sn,
+    s_sn: String(s_sn),
     cnname: this.cnname,
     enname: this.enname,
     sex: this.sex,
@@ -261,12 +282,21 @@ AjaxObject.prototype.modify = function () {
   };
   response = JSON.stringify(data);
   refreshTable(JSON.parse(response));
-  $("#dialog-modifyconfirm").dialog("close");
+  // $("#dialog-modifyconfirm").dialog("close");
+
+  // 新增成功sweet alert
+  Swal.fire({
+    title: '修改成功!',
+    text: '已修改一筆資料',
+    icon: 'success',
+    showConfirmButton: false,
+    timer: 1500
+  })
 };
 
 AjaxObject.prototype.modify_get = function (ssn) {
-  //   console.log(ssn);
-  let dataIndex = {}; //物件
+  console.log(data);
+  let dataIndex = {}; //目標物件容器
   for (let i = 0; i < data.length; i++) {
     if (data[i].s_sn === ssn) {
       dataIndex = data[i];
@@ -276,12 +306,12 @@ AjaxObject.prototype.modify_get = function (ssn) {
   }
 
   response = JSON.stringify(dataIndex);
-//   console.log(response);
   initEdit(JSON.parse(response), data, ssn);
 };
 
-// 搜尋指定樣木
+// 搜尋指定項目
 AjaxObject.prototype.search = function () {
+  console.log(this);
   targetId = this.id;
   targetCnname = this.cnname;
   targetEnname = this.enname;
@@ -299,7 +329,7 @@ AjaxObject.prototype.search = function () {
   });
   response = JSON.stringify(data);
   refreshTable(JSON.parse(response));
-  $("#dialog-searchconfirm").dialog("close");
+  // $("#dialog-searchconfirm").dialog("close");
 };
 
 // 刪除指定欄位
@@ -310,4 +340,13 @@ AjaxObject.prototype.delete = function () {
   });
   response = JSON.stringify(data);
   refreshTable(JSON.parse(response));
+
+  // 新增成功sweet alert
+  Swal.fire({
+    title: '刪除成功!',
+    text: '已刪除一筆資料',
+    icon: 'success',
+    showConfirmButton: false,
+    timer: 1500
+  })
 };

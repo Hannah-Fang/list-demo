@@ -109,6 +109,10 @@
   background-color: #7561cc;
 }
 
+.deleteBtn:hover {
+  background-color: #dc3545;
+}
+
 .btnRound:hover i {
   color: #fff;
 }
