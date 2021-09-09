@@ -1,540 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="Hello World" />
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://jqueryui.com/resources/demos/style.css"
-    />
-    <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <!-- BS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-    <!-- custom CSS -->
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <!-- JS -->
-    <script type="text/javascript" src="./demo.js"></script>
-    <!-- fontawesome -->
-    <link
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      rel="stylesheet"
-    />
-    <!-- 動畫套件 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
 
-    <!-- sweetAlert -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
-    <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Hello World" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css" />
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap" rel="stylesheet" />
+  <!-- BS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <!-- custom CSS -->
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <!-- JS -->
+  <script type="text/javascript" src="./demo.js"></script>
+  <!-- fontawesome -->
+  <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
+  <!-- 動畫套件 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <title>個人資料表</title>
-  </head>
+  <!-- sweetAlert -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
+  <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
 
-  <body>
-    <!-- title-bar -->
-    <div class="title-bar">
-      <div class="container py-3 align-items-center justify-content-between">
-        <div class="h1 title">個人資料表</div>
+  <title>個人資料表</title>
+</head>
 
-        <div>
-          <button
-            type="button"
-            class="btn btnPrimary"
-            data-toggle="modal"
-            data-target="#addbutton"
-          >
-            <i class="fas fa-plus"></i>新增
-          </button>
-          <button
-            type="button"
-            class="btn btnPrimary"
-            data-toggle="modal"
-            data-target="#searchbutton"
-          >
-            <i class="fas fa-search"></i>搜尋
-          </button>
+<body>
+  <!-- title-bar -->
+  <div class="title-bar">
+    <div class="container py-3 align-items-center justify-content-between">
+      <div class="h1 title">個人資料表</div>
+
+      <div>
+        <button type="button" class="btn btnPrimary" data-toggle="modal" data-target="#addbutton">
+          <i class="fas fa-plus"></i>新增
+        </button>
+        <button type="button" class="btn btnPrimary" data-toggle="modal" data-target="#searchbutton">
+          <i class="fas fa-search"></i>搜尋
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- table -->
+  <div class="table-area">
+    <div class="container text-center table-wrap">
+      <table class="table" id="cardtable" cellpadding="0" cellspacing="0" border="2" bordercolor="black" width="100%"
+        class="animate__animated animate__bounce">
+        <thead>
+          <tr>
+            <th scope="col" class="tableTh">中文名字</th>
+            <th scope="col" class="tableTh">英文名字</th>
+            <th scope="col" class="tableTh">手機</th>
+            <th scope="col" class="tableTh">信箱</th>
+            <th scope="col" class="tableTh">性別</th>
+            <th scope="col" class="tableTh">修改</th>
+            <th scope="col" class="tableTh">刪除</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!--新增表單-->
+    <div class="modal fade" id="addbutton" tabindex="-1" role="dialog" aria-labelledby="addformTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addformTitle">新增表單</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="post" id="addform">
+              <!-- 中文姓名 -->
+              <div class="formcnname mt-3 mb-4 mx-1">
+                <div class="d-flex position-relative">
+                  <label class="w-25" for="addcnname">中文姓名</label>
+                  <input name="cnname" type="text" id="addcnname" class="form-control" />
+                </div>
+                <!-- <span class="text-danger" id="error-cnname">&nbsp;</span> -->
+              </div>
+              <!-- 英文姓名 -->
+              <div class="formenname mb-4 mx-1">
+                <div class="d-flex position-relative">
+                  <label class="w-25">英文姓名</label>
+                  <input name="enname" type="text" id="addenname" class="form-control" />
+                </div>
+                <!-- <span class="text-danger" id="error-cnname">&nbsp;</span> -->
+              </div>
+              <!-- 手機 -->
+              <div class="formephone mb-4 mx-1">
+                <div class="d-flex position-relative">
+                  <label class="w-25">手機</label>
+                  <input name="phone" type="text" id="addphone" minlength="10" class="form-control" />
+                </div>
+                <!-- <span class="text-danger" id="error-cnname">&nbsp;</span> -->
+              </div>
+              <!-- email -->
+              <div class="formemail mb-4 mx-1">
+                <div class="d-flex position-relative">
+                  <label class="w-25">信箱</label>
+                  <input name="email" type="email" id="addemail" class="form-control" />
+                </div>
+                <!-- <span class="text-danger" id="error-cnname">&nbsp;</span> -->
+              </div>
+              <!-- 性別 -->
+              <div class="formsex mb-4 mx-1 d-flex position-relative">
+                <label class="w-25">性別</label>
+                <div>
+                  <label class="mr-3">
+                    <input type="radio" name="addsex" value="man" class="radio" checked="checked" />男</label>
+                  <label>
+                    <input type="radio" name="addsex" value="woman" class="radio" />女</label>
+                </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <!-- 拿掉 data-dismiss="modal"  -->
+            <button type="submit" class="btn btnForm" id="addBtn">
+              新增
+            </button>
+            <button type="button" class="btn btnForm" id="resetBtnAdd">
+              重新填寫
+            </button>
+            <button type="button" class="btn btnForm btnMute" data-dismiss="modal">
+              取消
+            </button>
+          </div>
+          <!-- from 表單結尾需要包住你的 button 啊啊啊 -->
+          </form>
         </div>
       </div>
     </div>
 
-    <!-- table -->
-    <div class="table-area">
-      <div class="container text-center table-wrap">
-        <table
-          class="table"
-          id="cardtable"
-          cellpadding="0"
-          cellspacing="0"
-          border="2"
-          bordercolor="black"
-          width="100%"
-          class="animate__animated animate__bounce"
-        >
-          <thead>
-            <tr>
-              <th scope="col" class="tableTh">中文名字</th>
-              <th scope="col" class="tableTh">英文名字</th>
-              <th scope="col" class="tableTh">手機</th>
-              <th scope="col" class="tableTh">信箱</th>
-              <th scope="col" class="tableTh">性別</th>
-              <th scope="col" class="tableTh">修改</th>
-              <th scope="col" class="tableTh">刪除</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <!--新增表單-->
-      <div
-        class="modal fade"
-        id="addbutton"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="addformTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addformTitle">新增表單</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="post" id="addform">
-                <!-- 中文姓名 -->
-                <div class="formcnname mt-3 mb-1 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25" for="addcnname">中文姓名</label>
-                    <input
-                      name="cnname"
-                      type="text"
-                      id="addcnname"
-                      class="form-control"
-                    />
-                  </div>
-                  <span class="text-danger" id="error-cnname">&nbsp;</span>
-                </div>
-                <!-- 英文姓名 -->
-                <div class="formenname my-1 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">英文姓名</label>
-                    <input
-                      name="enname"
-                      type="text"
-                      id="addenname"
-                      class="form-control"
-                    />
-                  </div>
-                  <span class="text-danger" id="error-cnname">&nbsp;</span>
-                </div>
-                <!-- 手機 -->
-                <div class="formephone my-1 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">手機</label>
-                    <input
-                      name="phone"
-                      type="text"
-                      id="addphone"
-                      minlength="10"
-                      class="form-control"
-                    />
-                  </div>
-                  <span class="text-danger" id="error-cnname">&nbsp;</span>
-                </div>
-                <!-- email -->
-                <div class="formemail my-1 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">信箱</label>
-                    <input
-                      name="email"
-                      type="email"
-                      id="addemail"
-                      class="form-control"
-                    />
-                  </div>
-                  <span class="text-danger" id="error-cnname">&nbsp;</span>
-                </div>
-                <!-- 性別 -->
-                <div class="formsex my-1 mx-1 d-flex">
-                  <label class="w-25">性別</label>
-                  <div>
-                    <label class="mr-3">
-                      <input
-                        type="radio"
-                        name="addsex"
-                        value="man"
-                        class="radio"
-                        checked="checked"
-                      />男</label
-                    >
-                    <label>
-                      <input
-                        type="radio"
-                        name="addsex"
-                        value="woman"
-                        class="radio"
-                      />女</label
-                    >
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="submit"
-                class="btn btnForm"
-                data-dismiss="modal"
-                id="addBtn"
-              >
-                新增
-              </button>
-              <button type="button" class="btn btnForm" id="resetBtnAdd">
-                重新填寫
-              </button>
-              <button
-                type="button"
-                class="btn btnForm btnMute"
-                data-dismiss="modal"
-              >
-                取消
-              </button>
-            </div>
+    <!--搜尋表單-->
+    <div class="modal fade" id="searchbutton" tabindex="-1" role="dialog" aria-labelledby="searchformTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchformTitle">搜尋表單</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-      </div>
-
-      <!--搜尋表單-->
-      <div
-        class="modal fade"
-        id="searchbutton"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="searchformTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="searchformTitle">搜尋表單</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="post" id="searchform">
-                <!-- 中文姓名 -->
-                <div class="formcnname my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">中文姓名</label>
-                    <input
-                      name="cnname"
-                      type="text"
-                      id="secnname"
-                      class="form-control"
-                    />
-                  </div>
+          <div class="modal-body">
+            <form method="post" id="searchform">
+              <!-- 中文姓名 -->
+              <div class="formcnname my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">中文姓名</label>
+                  <input name="cnname" type="text" id="secnname" class="form-control" />
                 </div>
-                <!-- 英文姓名 -->
-                <div class="formenname my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">英文姓名</label>
-                    <input
-                      name="enname"
-                      type="text"
-                      id="seenname"
-                      class="form-control"
-                    />
-                  </div>
+              </div>
+              <!-- 英文姓名 -->
+              <div class="formenname my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">英文姓名</label>
+                  <input name="enname" type="text" id="seenname" class="form-control" />
                 </div>
-                <!-- 手機 -->
-                <div class="formephone my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">手機</label>
-                    <input
-                      name="phone"
-                      type="text"
-                      id="sephone"
-                      minlength="10"
-                      class="form-control"
-                    />
-                  </div>
+              </div>
+              <!-- 手機 -->
+              <div class="formephone my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">手機</label>
+                  <input name="phone" type="text" id="sephone" minlength="10" class="form-control" />
                 </div>
-                <!-- email -->
-                <div class="formemail my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">信箱</label>
-                    <input
-                      name="email"
-                      type="email"
-                      id="seemail"
-                      class="form-control"
-                    />
-                  </div>
+              </div>
+              <!-- email -->
+              <div class="formemail my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">信箱</label>
+                  <input name="email" type="email" id="seemail" class="form-control" />
                 </div>
-                <!-- 性別 -->
-                <div class="formsex d-flex my-3 mx-1">
-                  <label class="w-25">性別</label>
-                  <div>
-                    <label class="mr-3"
-                      ><input
-                        type="radio"
-                        name="sesex"
-                        value="man"
-                        class="seradio"
-                      />男</label
-                    >
-                    <label
-                      ><input
-                        type="radio"
-                        name="sesex"
-                        value="woman"
-                        class="seradio"
-                      />女</label
-                    >
-                  </div>
+              </div>
+              <!-- 性別 -->
+              <div class="formsex d-flex my-3 mx-1">
+                <label class="w-25">性別</label>
+                <div>
+                  <label class="mr-3"><input type="radio" name="sesex" value="man" class="seradio" />男</label>
+                  <label><input type="radio" name="sesex" value="woman" class="seradio" />女</label>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btnForm"
-                data-dismiss="modal"
-                id="searchBtn"
-              >
-                搜尋
-              </button>
-              <button type="button" class="btn btnForm" id="resetBtnSe">
-                重新填寫
-              </button>
-              <button
-                type="button"
-                class="btn btnForm btnMute"
-                data-dismiss="modal"
-              >
-                取消
-              </button>
-            </div>
+              </div>
+            </form>
           </div>
-        </div>
-      </div>
-
-      <!--修改表單-->
-      <div
-        class="modal fade"
-        id="modifybutton"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="modifyformTitle"
-        aria-hidden="true"
-      >
-        <div
-          class="modal-dialog modal-dialog-centered fade-scale"
-          role="document"
-        >
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modifyformTitle">修改資料</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="post" id="modifyform">
-                <!-- 中文姓名 -->
-                <div class="formcnname my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">中文姓名</label>
-                    <input
-                      name="cnname"
-                      type="text"
-                      id="mocnname"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-                <!-- 英文姓名 -->
-                <div class="formenname my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">英文姓名</label>
-                    <input
-                      name="enname"
-                      type="text"
-                      id="moenname"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-                <!-- 手機 -->
-                <div class="formephone my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">手機</label>
-                    <input
-                      name="phone"
-                      type="text"
-                      id="mophone"
-                      minlength="10"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-                <!-- email -->
-                <div class="formemail my-3 mx-1">
-                  <div class="d-flex">
-                    <label class="w-25">信箱</label>
-                    <input
-                      name="email"
-                      type="email"
-                      id="moemail"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-                <!-- 性別 -->
-                <div class="formsex my-3 mx-1 d-flex">
-                  <label class="w-25">性別</label>
-                  <div>
-                    <label
-                      ><input
-                        type="radio"
-                        name="mosex"
-                        value="man"
-                        class="radio"
-                        id="modifyman"
-                      />男</label
-                    >
-                    <label
-                      ><input
-                        type="radio"
-                        name="mosex"
-                        value="woman"
-                        class="radio"
-                        id="modifywoman"
-                      />女</label
-                    >
-                  </div>
-                </div>
-
-                <div class="formsid" style="display: none">
-                  <input name="sid" id="modifysid" />
-                </div>
-                <!-- 確認送出 -->
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="submit"
-                class="btn btnForm"
-                data-dismiss="modal"
-                id="modifyBtn"
-              >
-                修改
-              </button>
-              <button type="button" class="btn btnForm" id="resetBtnMo">
-                重新填寫
-              </button>
-              <button
-                type="button"
-                class="btn btnForm btnMute"
-                data-dismiss="modal"
-              >
-                取消
-              </button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btnForm" id="searchBtn">
+              搜尋
+            </button>
+            <button type="button" class="btn btnForm" id="resetBtnSe">
+              重新填寫
+            </button>
+            <button type="button" class="btn btnForm btnMute" data-dismiss="modal">
+              取消
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"
-    ></script>
+    <!--修改表單-->
+    <div class="modal fade" id="modifybutton" tabindex="-1" role="dialog" aria-labelledby="modifyformTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered fade-scale" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modifyformTitle">修改資料</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="post" id="modifyform">
+              <!-- 中文姓名 -->
+              <div class="formcnname my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">中文姓名</label>
+                  <input name="cnname" type="text" id="mocnname" class="form-control" />
+                </div>
+              </div>
+              <!-- 英文姓名 -->
+              <div class="formenname my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">英文姓名</label>
+                  <input name="enname" type="text" id="moenname" class="form-control" />
+                </div>
+              </div>
+              <!-- 手機 -->
+              <div class="formephone my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">手機</label>
+                  <input name="phone" type="text" id="mophone" minlength="10" class="form-control" />
+                </div>
+              </div>
+              <!-- email -->
+              <div class="formemail my-3 mx-1">
+                <div class="d-flex">
+                  <label class="w-25">信箱</label>
+                  <input name="email" type="email" id="moemail" class="form-control" />
+                </div>
+              </div>
+              <!-- 性別 -->
+              <div class="formsex my-3 mx-1 d-flex">
+                <label class="w-25">性別</label>
+                <div>
+                  <label><input type="radio" name="mosex" value="man" class="radio" id="modifyman" />男</label>
+                  <label><input type="radio" name="mosex" value="woman" class="radio" id="modifywoman" />女</label>
+                </div>
+              </div>
 
-    <!-- jQuery Validation v1.17.0 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+              <div class="formsid" style="display: none">
+                <input name="sid" id="modifysid" />
+              </div>
+              <!-- 確認送出 -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btnForm" data-dismiss="modal" id="modifyBtn">
+              修改
+            </button>
+            <button type="button" class="btn btnForm" id="resetBtnMo">
+              重新填寫
+            </button>
+            <button type="button" class="btn btnForm btnMute" data-dismiss="modal">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-      $(document).ready(function () {
-        // hover十字變色
-        $("td").hover(
-          function () {
-            var thisIndex = $(this).parents("tr").find("td").index($(this));
-            $("table tr td:nth-child(" + (thisIndex + 1) + ")").addClass(
-              "active"
-            );
-          },
-          function () {
-            $("td").removeClass("active");
-          }
-        );
+  <!-- BS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
 
-        $('[data-toggle="tooltip"]').tooltip();
-        $('[data-toggle="popover"]').popover();
+  <!-- jQuery Validation v1.17.0 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 
-        // 特效一：按鈕hover會跳動，提示使用者可以點擊
-        let animateRotate =
-          "animate__animated animate__bounceIn animate__faster";
-        $(".btnRound").hover(function () {
-          $(this)
-            // .children("i")
-            .addClass(animateRotate)
-            .one("animationend", function () {
-              $(this).removeClass(animateRotate);
-            });
-        });
+  <script>
+    $(document).ready(function () {
+      // hover十字變色
+      $("td").hover(
+        function () {
+          var thisIndex = $(this).parents("tr").find("td").index($(this));
+          $("table tr td:nth-child(" + (thisIndex + 1) + ")").addClass(
+            "active"
+          );
+        },
+        function () {
+          $("td").removeClass("active");
+        }
+      );
+
+      $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="popover"]').popover();
+
+      // 特效一：按鈕hover會跳動，提示使用者可以點擊
+      let animateRotate =
+        "animate__animated animate__bounceIn animate__faster";
+      $(".btnRound").hover(function () {
+        $(this)
+          // .children("i")
+          .addClass(animateRotate)
+          .one("animationend", function () {
+            $(this).removeClass(animateRotate);
+          });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

@@ -71,10 +71,12 @@
 }
 
 /* ----- 表單驗證 ----- */
-.text-danger {
-  margin-left: 20%;
+label.error {
+  position: absolute;
+  left: 20%;
+  top: 100%;
   font-size: 0.8rem;
-  line-height: 0.8rem;
+  color: #dc3545;
 }
 
 /* ----- table ----- */
@@ -196,7 +198,7 @@ thead {
   color: #fff;
 }
 
-.d-flex > label {
+label.w-25 {
   color: #7561cc;
 }
 
