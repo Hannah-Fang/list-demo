@@ -70,6 +70,13 @@
   color: #7561cc;
 }
 
+/* ----- 表單驗證 ----- */
+.text-danger {
+  margin-left: 20%;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
 /* ----- table ----- */
 .table {
   border-radius: 10px;

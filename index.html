@@ -20,6 +20,8 @@
   <script type="text/javascript" src="./demo.js"></script>
   <!-- fontawesome -->
   <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+  
+
   <title>個人資料表</title>
 </head>
 
@@ -28,10 +30,7 @@
 <div class=" title-bar">
   <div class="container  py-3 align-items-center justify-content-between">
     <div class="h1 title">個人資料表</div>
-  <!-- 
-    <button class="testBtn">抓資料測試</button>
-    <ul class="testInfo">
-    </ul> -->
+
     <div>
       <button type="button" class="btn btnPrimary" data-toggle="modal" data-target="#addbutton"><i class="fas fa-plus"></i>新增</button>
       <button type="button" class="btn btnPrimary" data-toggle="modal" data-target="#searchbutton"><i class="fas fa-search"></i>搜尋</button>
@@ -72,40 +71,45 @@
         <div class="modal-body">
           <form method="post" id="addform">
             <!-- 中文姓名 -->
-            <div class="formcnname my-3 mx-1">
+            <div class="formcnname mt-3 mb-1 mx-1">
               <div class="d-flex">
-                <label class="w-25">中文姓名</label> 
-                <input name="cnname" type="text" id="addcnname" class="form-control">
+                <label class="w-25" for="addcnname">中文姓名</label> 
+                <input name="cnname" type="text" id="addcnname" class="form-control" >
               </div>
+              <span class="text-danger" id="error-cnname" >&nbsp;</span>
             </div>
             <!-- 英文姓名 -->
-            <div class="formenname my-3 mx-1">
+            <div class="formenname my-1 mx-1">
               <div class="d-flex">
-                <label class="w-25">英文姓名</label> <input name="enname" type="text" id="addenname"
-                  class="form-control">
+                <label class="w-25">英文姓名</label>
+                <input name="enname" type="text" id="addenname" class="form-control">
               </div>
+              <span class="text-danger" id="error-cnname" >&nbsp;</span>
             </div>
             <!-- 手機 -->
-            <div class="formephone my-3 mx-1">
+            <div class="formephone my-1 mx-1">
               <div class="d-flex">
-                <label class="w-25">手機</label> <input name="phone" type="text" id="addphone" minlength="10"
-                  class="form-control">
+                <label class="w-25">手機</label>
+                <input name="phone" type="text" id="addphone" minlength="10" class="form-control">
               </div>
+              <span class="text-danger" id="error-cnname" >&nbsp;</span>
             </div>
             <!-- email -->
-            <div class="formemail my-3 mx-1">
+            <div class="formemail my-1 mx-1">
               <div class="d-flex">
-                <label class="w-25">信箱</label> <input name="email" type="email" id="addemail"
-                  class="form-control">
+                <label class="w-25">信箱</label>
+                <input name="email" type="email" id="addemail" class="form-control">
               </div>
+              <span class="text-danger" id="error-cnname" >&nbsp;</span>
             </div>
             <!-- 性別 -->
-            <div class="formsex my-3 mx-1 d-flex">
+            <div class="formsex my-1 mx-1 d-flex">
               <label class="w-25">性別</label>
               <div>
-                <label class="mr-3"><input type="radio" name="addsex" value="man" class="radio" checked="checked">男</label>
-                <label><input
-                    type="radio" name="addsex" value="woman" class="radio">女</label>
+                <label class="mr-3">
+                  <input type="radio" name="addsex" value="man" class="radio" checked="checked">男</label>
+                <label>
+                  <input type="radio" name="addsex" value="woman" class="radio">女</label>
               </div>
             </div>
           </form>
@@ -184,36 +188,68 @@
 
 
   <!--修改表單-->
-  <div id="dialog-modifyconfirm" title="修改表單" style="display: none">
-    <form method="post" id="modifyform">
-      <!-- 中文姓名 -->
-      <div class="formcnname">
-        <div>
-          <label>中文姓名</label> <input name="cnname" type="text" id="mocnname"
-            class="form-control">
+  <div class="modal fade" id="modifybutton" tabindex="-1" role="dialog" aria-labelledby="modifyformTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modifyformTitle">修改資料</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" id="modifyform">
+            <!-- 中文姓名 -->
+            <div class="formcnname my-3 mx-1">
+              <div class="d-flex">
+                <label class="w-25">中文姓名</label>
+                <input name="cnname" type="text" id="mocnname"
+                  class="form-control">
+              </div>
+            </div>
+            <!-- 英文姓名 -->
+            <div class="formenname my-3 mx-1">
+              <div class="d-flex">
+                <label class="w-25">英文姓名</label> <input name="enname"  type="text" id="moenname"
+                  class="form-control">
+              </div>
+            </div>
+            <!-- 手機 -->
+            <div class="formephone my-3 mx-1">
+              <div class="d-flex">
+                <label class="w-25">手機</label> <input name="phone" type="text" id="mophone" minlength="10"
+                  class="form-control">
+              </div>
+            </div>
+            <!-- email -->
+            <div class="formemail my-3 mx-1">
+              <div class="d-flex">
+                <label class="w-25">信箱</label> <input name="email" type="email" id="moemail"
+                  class="form-control">
+              </div>
+            </div>
+            <!-- 性別 -->
+            <div class="formsex my-3 mx-1 d-flex">
+              <label class="w-25">性別</label>
+              <div>
+                <label><input type="radio" name="mosex" value="man" class="radio" id="modifyman">男</label> <label><input
+                    type="radio" name="mosex" value="woman" class="radio" id="modifywoman">女</label>
+              </div>
+            </div>
+      
+            <div class="formsid" style="display: none">
+              <input name="sid" id="modifysid">
+            </div>
+            <!-- 確認送出 -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btnForm"  data-dismiss="modal" id="modifyBtn">修改</button>
+          <button type="button" class="btn btnForm" id="resetBtn">重新填寫</button>
+          <button type="button" class="btn btnForm btnMute" data-dismiss="modal">取消</button>
         </div>
       </div>
-      <!-- 英文姓名 -->
-      <div class="formenname">
-        <div>
-          <label>英文姓名</label> <input name="enname"  type="text" id="moenname"
-            class="form-control">
-        </div>
-      </div>
-      <!-- 性別 -->
-      <div class="formsex">
-        <label>性別</label>
-        <div>
-          <label><input type="radio" name="mosex" value="man" class="radio" id="modifyman">男</label> <label><input
-              type="radio" name="mosex" value="woman" class="radio" id="modifywoman">女</label>
-        </div>
-      </div>
-
-      <div class="formsid" style="display: none">
-        <input name="sid" id="modifysid">
-      </div>
-      <!-- 確認送出 -->
-    </form>
+    </div>
   </div>
 
 </div>
@@ -222,16 +258,22 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  <script>
-    // $(document).ready(function(){
-    //   $("td").hover(function(){
-    //     var thisIndex = $(this).parents('tr').find('td').index( $(this) );
-    //     $('table tr td:nth-child(' + (thisIndex+1) + ')').addClass('active');
 
-    //   },function(){
-    //     $("td").removeClass('active');
-    //   });
-    // });
+  <!-- jQuery Validation v1.17.0 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // hover十字變色
+      $("td").hover(function(){
+        var thisIndex = $(this).parents('tr').find('td').index( $(this) );
+        $('table tr td:nth-child(' + (thisIndex+1) + ')').addClass('active');
+
+      },function(){
+        $("td").removeClass('active');
+      });
+
+    });
   </script>
 </body>
 
