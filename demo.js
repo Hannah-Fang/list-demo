@@ -109,7 +109,7 @@ $(document).ready(function () {
   //     $("#dialog-confirm").dialog("option", "height", dHeight);
   // });
 
-  // 表單驗證
+  // 表單驗證-新增表單 addform
   let validate = $('form#addform').validate({
     rules: {
       cnname: {
