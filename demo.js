@@ -119,15 +119,20 @@ $(document).ready(function () {
 
 function refreshTable(data) {
   // var HTML = '';
+
   $("#cardtable tbody > tr").remove();
+  
+  
   $.each(data, function (key, item) {
     var strsex = "";
     if (item.sex == 0) strsex = "男";
     else strsex = "女";
+    let phoneFormat = (item.phone).slice(0, 3) + "-" + (item.phone).slice(4, 7) + "-" + (item.phone).slice(7);
+    // console.log(phoneFormat);
     var row = $("<tr></tr>");
-    row.append($("<td></td>").html(item.cnname));
+    row.append($("<td data-toggle='tooltip' data-placement='top' title='[ " + strsex + " ] " + item.cnname + " ( " + item.enname + " )'></td>").html(item.cnname));
     row.append($("<td></td>").html(item.enname));
-    row.append($("<td></td>").html(item.phone));
+    row.append($("<td data-toggle='popover' data-placement='top' data-content='聯絡資訊："+ phoneFormat +"'></td>").html(item.phone));
     row.append($("<td></td>").html(item.email));
     row.append($("<td></td>").html(strsex));
     row.append(
